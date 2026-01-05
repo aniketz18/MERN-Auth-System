@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 require("dotenv").config;
 const jwt = require("jsonwebtoken");
 // jwt and cookie wor pending
- 
+
 // signup Api
 const signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -19,7 +19,7 @@ const signup = async (req, res) => {
       bcrypt.hash(password, salt, function (err, hash) {
         const userModel = new UserModel({ name, email, password: hash });
         userModel.save();
-        console.log(userModel);
+        //  console.log(userModel);
       });
     });
     res.status(200).json({ message: "signup successfully", success: true });
@@ -34,7 +34,7 @@ const login = async (req, res) => {
 
   try {
     const user = await UserModel.findOne({ email });
-    console.log(user);
+    // console.log(user);
 
     if (!user) {
       return res
@@ -48,6 +48,7 @@ const login = async (req, res) => {
           process.env.JWT_SECRET,
           { expiresIn: "1d" }
         );
+        
         res
           .status(200)
           .json({ message: "Login successfully", success: true, token });
@@ -63,13 +64,13 @@ const login = async (req, res) => {
 };
 
 //logout Api pending
-const logout = async (req, res)=>{
-  token = ""
-  res.status(200).json({message: "logout succesfully", success: true , token })
-}
+const logout = async (req, res) => {
+  token = "";
+  res.status(200).json({ message: "logout succesfully", success: true, token });
+};
 
 module.exports = {
   signup,
   login,
-  logout
+  logout,
 };
