@@ -34,6 +34,11 @@ function Signup() {
 
       const data = await res.json();
       console.log(data);
+      if (data.success) {
+        toast.success("Registered successfully..🤩");
+      } else {
+        toast.error("Please Check details");
+      }
     } catch (error) {
       toast.error("Server error. Please try again.");
     }

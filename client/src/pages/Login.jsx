@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
@@ -40,7 +41,6 @@ function Login() {
         return;
       }
       localStorage.setItem("token", data.token);
-      toast.success("Login successful");
       navigate("/profile");
     } catch (error) {
       toast.error("Server error. Please try again.");
@@ -70,6 +70,10 @@ function Login() {
           />
         </div>
         <button>Login</button>
+         <span>
+           have'nt an account?
+          <Link to="/signup">Register</Link>
+        </span>
       </form>
       <ToastContainer />
     </div>

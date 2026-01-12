@@ -1,4 +1,4 @@
-const ensureAuthenticated = require("../middlewares/AuthEnsure");
+/* const ensureAuthenticated = require("../middlewares/AuthEnsure");
 
 const router = require("express").Router();
 
@@ -29,3 +29,4 @@ router.get("/",ensureAuthenticated, (req, res) => {
 });
 
 module.exports = router;
+ */
