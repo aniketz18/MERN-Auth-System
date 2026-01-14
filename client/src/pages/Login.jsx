@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -26,7 +26,7 @@ function Login() {
 
     try {
       // backend ko data bhejna
-      const res = await fetch("http://localhost:3000/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,8 +70,8 @@ function Login() {
           />
         </div>
         <button>Login</button>
-         <span>
-           have'nt an account?
+        <span>
+          have'nt an account?
           <Link to="/signup">Register</Link>
         </span>
       </form>
